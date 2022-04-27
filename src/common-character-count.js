@@ -22,10 +22,8 @@ function getCommonCharacterCount(s1, s2) {
       }
     }
   }
-  console.log(count)
   return count
 }
-getCommonCharacterCount('a', 'b')
 
 module.exports = {
   getCommonCharacterCount
