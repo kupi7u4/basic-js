@@ -17,9 +17,29 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-function dateSample(/* sampleActivity */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+
+/*
+T = ln(N / N(0)) / k
+K = 0.693 / t(1/2)
+t(1/2) = 5730 - константа полураспада - HALF_LIFE_PERIOD
+N = 15 - начальная активность изотопа - MODERN_ACTIVITY
+N(0) = конечная активность - sampleActivity
+*/
+
+function dateSample(sampleActivity) {
+  const HALF_LIFE_PERIOD = 5730
+  const MODERN_ACTIVITY = 15
+  let activity = +sampleActivity
+
+  if (typeof(sampleActivity) !== 'string' || isNaN(activity) || activity <= 0 || activity > 15) {
+    return false
+  } else {
+    activity = +sampleActivity
+  }
+
+  let years = Math.log(MODERN_ACTIVITY / activity) / (0.693 / HALF_LIFE_PERIOD)
+  let res = Math.ceil(years)
+  return res
 }
 
 module.exports = {
