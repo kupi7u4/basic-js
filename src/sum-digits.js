@@ -13,26 +13,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getSumOfDigits(n) {
-  let arr = Array.from(n)
-  arr.map(el => Number(el))
+  let arr = (n + '').split('')
+  arr = arr.map(el => Number(el))
+  let res = 0
 
-  // n.map(el => x += el, x = 0)
-
-  console.log(arr)
-    // if (n < 10) {
-    //   console.log('остановились, итог ', n)
-    //   return sum
-    // } else {
-    //   for (let i = 0; i < arr.length; i++) {
-    //     parseInt(arr[i])
-    //     console.log()
-    //   }
-    //   // arr.map((el) => getSumOfDigits(n + +el))
-    // }
-
+  for (let i = 0; i < arr.length; i++) {
+    res += arr[i]
+  }
+  if (res > 9) {
+    getSumOfDigits(res)
+  } else {
+    return res
+  }
 }
-
-getSumOfDigits(913)
 
 module.exports = {
   getSumOfDigits
